@@ -5,12 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import org.apache.commons.io.FileUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList items = new ArrayList<>(FileUtils.readLines(getDataFile(), Charset.defaultCharset());
+    ArrayList<String> items ;
     Button btnAdd;
     EditText etItem;
     RecyclerView rvItems;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 //notify the adapter
                 itemsAdapter.notifyItemRemoved(position);
                 Toast.makeText(getApplicationContext(), "Item was removed", Toast.LENGTH_SHORT).show();
-                saveItems()
+                saveItems();
             }
         };
         final ItemsAdapter itemsAdapter = new ItemsAdapter(items, onLongClickListener);
